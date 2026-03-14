@@ -59,7 +59,7 @@ function App() {
     setTodos(todos.map(todo => todo.id === id ? { ...todo, notes } : todo))
   }
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') addTodo()
   }
 
@@ -77,7 +77,7 @@ function App() {
             type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            onKeyPress={handleKeyPress}
+            onKeyDown={handleKeyDown}
             placeholder="New task title"
             maxLength={MAX_TASK_LENGTH}
             autoComplete="off"
@@ -90,6 +90,7 @@ function App() {
             type="text"
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
+            onKeyDown={(e) => { if (e.key === 'Enter') e.preventDefault() }}
             placeholder="Search task"
             maxLength={100}
             autoComplete="off"
