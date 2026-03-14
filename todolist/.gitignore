@@ -22,11 +22,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-# Media assets (add manually or via CI)
-public/background/*.mp4
-public/background/*.webm
-public/carousel/*.jpg
-public/carousel/*.jpeg
-public/carousel/*.png
-public/carousel/*.webp
