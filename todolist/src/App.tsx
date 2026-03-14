@@ -112,22 +112,24 @@ function App() {
         )}
 
         <ul className="todo-list">
-          {todos.map(todo => (
-            <TodoItem
-              key={todo.id}
-              todo={todo}
-              highlighted={!!searchValue.trim() && todo.text.toLowerCase().includes(searchValue.toLowerCase())}
-              onToggle={toggleTodo}
-              onDelete={deleteTodo}
-              onOpen={setModalTodoId}
-            >
-              {highlightText(todo.text, searchValue)}
-            </TodoItem>
-          ))}
+          {todos
+            .filter(todo => !searchValue.trim() || todo.text.toLowerCase().includes(searchValue.toLowerCase()))
+            .map(todo => (
+              <TodoItem
+                key={todo.id}
+                todo={todo}
+                highlighted={false}
+                onToggle={toggleTodo}
+                onDelete={deleteTodo}
+                onOpen={setModalTodoId}
+              >
+                {highlightText(todo.text, searchValue)}
+              </TodoItem>
+            ))}
         </ul>
 
-        {todos.length === 0 && (
-          <p className="empty-message">There are no tasks</p>
+        {(todos.length === 0 || (searchValue.trim() && !todos.some(t => t.text.toLowerCase().includes(searchValue.toLowerCase())))) && (
+          <p className="empty-message">{todos.length === 0 ? 'There are no tasks' : 'Nothing found'}</p>
         )}
 
         {modalTodo && (
