@@ -8,10 +8,12 @@ import type { Todo } from './components/TodoItem'
 const MAX_TASK_LENGTH = 200
 const MAX_NOTE_LENGTH = 2000
 
+const BASE = import.meta.env.BASE_URL
+
 const CAROUSEL_IMAGES = [
-  { url: '/carousel/photo1.jpg' },
-  { url: '/carousel/photo2.jpg' },
-  { url: '/carousel/photo3.jpg' },
+  { url: `${BASE}carousel/photo1.jpg` },
+  { url: `${BASE}carousel/photo2.jpg` },
+  { url: `${BASE}carousel/photo3.jpg` },
 ]
 
 function highlightText(text: string, search: string) {
@@ -65,7 +67,7 @@ function App() {
 
   return (
     <>
-      <VideoBackground src="/background/bg.mp4" opacity={0.75} />
+      <VideoBackground src={`${BASE}background/bg.mp4`} opacity={0.75} />
       <div className="container">
         <Carousel images={CAROUSEL_IMAGES} interval={1500} height={280} />
         <h1>To-Do List</h1>
