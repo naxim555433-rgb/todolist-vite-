@@ -121,19 +121,28 @@ h1 {
   border-color: #667eea;
 }
 
-.input-section button {
+.input-section .add-btn {
   padding: 12px 24px;
-  background: #888;
+  background: #ccc;
   color: white;
   border: none;
   border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.25s, transform 0.15s;
 }
 
-.input-section button:hover {
-  background: #666;
+.input-section .add-btn.active {
+  background: #222;
+}
+
+.input-section .add-btn.active:hover {
+  background: #000;
+  transform: translateY(-1px);
+}
+
+.input-section .add-btn:not(.active) {
+  cursor: default;
 }
 
 .search-section {
@@ -202,7 +211,8 @@ h1 {
   width: 20px;
   height: 20px;
   cursor: pointer;
-  accent-color: #667eea;
+  accent-color: #333;
+  opacity: 0.6;
 }
 
 .todo-list li span {
@@ -216,15 +226,14 @@ h1 {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: #667eea !important;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  color: #111 !important;
+  text-decoration: none;
   cursor: pointer;
   transition: color 0.2s;
 }
 
 .todo-link:hover {
-  color: #4a5fc0 !important;
+  color: #444 !important;
 }
 
 .todo-list li.completed .todo-link {
@@ -242,6 +251,7 @@ h1 {
 
 .todo-list li.completed span {
   text-decoration: line-through;
+  text-decoration-thickness: 2.5px;
   color: #999;
 }
 
@@ -373,15 +383,17 @@ h1 {
 }
 
 .counter {
-  color: #666;
+  color: #111;
   font-size: 14px;
+  font-weight: 700;
 }
 
 .delete-all-btn {
   background: none;
   border: none;
-  color: #ff6b6b;
+  color: #111;
   font-size: 14px;
+  font-weight: 700;
   cursor: pointer;
   padding: 4px 8px;
   border-radius: 4px;
